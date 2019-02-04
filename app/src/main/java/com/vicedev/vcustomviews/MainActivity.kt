@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(vh: MyViewHolder, pos: Int) {
-            vh.tvName.text = Constants.APP_MAP.valueAt(pos)
+            vh.tvName.text = Constants.APP_MAP.keyAt(pos)
             vh.itemView.setOnClickListener {
                 val intent = Intent(this@MainActivity, AppDetailListActivity::class.java)
-                intent.putExtra(AppDetailListActivity.APP_NAME, Constants.APP_MAP.valueAt(pos))
+                intent.putExtra(AppDetailListActivity.APP_NAME, Constants.APP_MAP.keyAt(pos))
                 startActivity(intent)
             }
         }
