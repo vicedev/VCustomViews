@@ -1,4 +1,4 @@
-package com.vicedev.vcustomviews.customviews
+package com.vicedev.vcustomviews.customviews.get
 
 import android.content.Context
 import android.util.AttributeSet

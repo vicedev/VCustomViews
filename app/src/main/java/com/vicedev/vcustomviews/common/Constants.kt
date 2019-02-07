@@ -17,11 +17,16 @@ class Constants {
         val APP_GET = "GET"
         val GET_CUSTOM_PUBLISH = "发布内容弹出效果"
 
+        //马蜂窝旅游
+        val APP_MFW = "马蜂窝旅游"
+        val MFW_WRIGGLE_TAB = "蠕动tab"
+
         val APP_MAP = ArrayMap<String, ArrayList<String>>()
 
         init {
             with(APP_MAP) {
                 put(APP_GET, arrayListOf(GET_CUSTOM_PUBLISH))
+                put(APP_MFW, arrayListOf(MFW_WRIGGLE_TAB))
             }
         }
 

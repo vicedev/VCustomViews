@@ -22,14 +22,26 @@ class DetailActivity : AppCompatActivity() {
         //标题栏
         supportActionBar?.title = customViewName
 
+        //自定义view的layout
+        var viewId = 0
+
         when (appName) {
         //get
             Constants.APP_GET -> when (customViewName) {
             //发布内容弹出效果
                 Constants.GET_CUSTOM_PUBLISH -> {
-                    View.inflate(this@DetailActivity, R.layout.get_publish_view, container)
+                    viewId = R.layout.get_publish_view
+                }
+            }
+        //马蜂窝
+            Constants.APP_MFW -> when (customViewName) {
+            //蠕动tab
+                Constants.MFW_WRIGGLE_TAB -> {
+                    viewId = R.layout.mfw_wriggle_tab_view
                 }
             }
         }
+        //添加到当前布局中
+        if (viewId != 0) View.inflate(this@DetailActivity, viewId, container)
     }
 }
