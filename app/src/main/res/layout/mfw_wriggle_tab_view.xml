@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.vicedev.vcustomviews.customviews.MFWWriggleTab.MFWWriggleTab xmlns:android="http://schemas.android.com/apk/res/android"
+<com.vicedev.vcustomviews.customviews.mfw.MFWWriggleTab.MFWWriggleTab xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal" />
 
-            <com.vicedev.vcustomviews.customviews.MFWWriggleTab.MFWWriggleIndicator
+            <com.vicedev.vcustomviews.customviews.mfw.MFWWriggleTab.MFWWriggleIndicator
                 android:id="@+id/mfw_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,4 +35,4 @@
         android:background="@android:color/holo_blue_light"
         android:layout_height="match_parent" />
 
-</com.vicedev.vcustomviews.customviews.MFWWriggleTab.MFWWriggleTab>
+</com.vicedev.vcustomviews.customviews.mfw.MFWWriggleTab.MFWWriggleTab>

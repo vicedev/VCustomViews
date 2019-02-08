@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class DetailActivity : AppCompatActivity() {
 
     companion object {
-        val CUSTOM_VIEW_NAME = "custom_view_name"
+        const val CUSTOM_VIEW_NAME = "custom_view_name"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,18 +26,26 @@ class DetailActivity : AppCompatActivity() {
         var viewId = 0
 
         when (appName) {
-        //get
+            //get
             Constants.APP_GET -> when (customViewName) {
-            //发布内容弹出效果
+                //发布内容弹出效果
                 Constants.GET_CUSTOM_PUBLISH -> {
                     viewId = R.layout.get_publish_view
                 }
             }
-        //马蜂窝
+            //马蜂窝
             Constants.APP_MFW -> when (customViewName) {
-            //蠕动tab
+                //蠕动tab
                 Constants.MFW_WRIGGLE_TAB -> {
                     viewId = R.layout.mfw_wriggle_tab_view
+                }
+            }
+
+            //支付宝
+            Constants.APP_ZFB -> when (customViewName) {
+                //芝麻信用
+                Constants.ZFB_SESAME_CREDIT -> {
+                    viewId = R.layout.zfb_sesame_credit_container
                 }
             }
         }
