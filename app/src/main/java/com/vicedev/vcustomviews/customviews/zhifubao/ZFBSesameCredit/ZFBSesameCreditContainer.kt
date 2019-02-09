@@ -1,8 +1,10 @@
 package com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.LinearLayout
 import com.vicedev.vcustomviews.common.showToast
 import kotlinx.android.synthetic.main.zfb_sesame_credit_container.view.*
@@ -35,6 +37,7 @@ class ZFBSesameCreditContainer : LinearLayout {
     }
 
     private fun set(anim: Boolean = false) {
+        clearAnimation()
         try {
             val maxScoreText = et_max_score.text.toString()
             if (TextUtils.isEmpty(maxScoreText)) {
@@ -48,10 +51,20 @@ class ZFBSesameCreditContainer : LinearLayout {
         }
         try {
             val curScore = et_score.text.toString()
-            if (TextUtils.isEmpty(curScore)) {
-                zfb_sesame_credit.curCores = 800
+            val curScoreNum: Int
+            curScoreNum = if (TextUtils.isEmpty(curScore)) {
+                800
             } else {
-                zfb_sesame_credit.curCores = curScore.toInt()
+                curScore.toInt()
+            }
+            if (anim) {
+                val objectAnimator = ObjectAnimator.ofInt(zfb_sesame_credit, "curCores", 0, curScoreNum)
+                        .setDuration(800)
+                objectAnimator.interpolator = AccelerateDecelerateInterpolator()
+                objectAnimator.start()
+
+            } else {
+                zfb_sesame_credit.curCores = curScoreNum
             }
         } catch (e: Exception) {
             context.showToast("当前分输入有问题，已设置为默认值800")

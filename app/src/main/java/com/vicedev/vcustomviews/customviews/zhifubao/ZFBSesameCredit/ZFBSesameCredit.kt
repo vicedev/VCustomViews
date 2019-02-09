@@ -1,7 +1,10 @@
 package com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
 import com.vicedev.vcustomviews.common.DisplayUtils
@@ -24,9 +27,6 @@ class ZFBSesameCredit : View {
         set(value) {
             if (value > maxScores || value < 0) return
             field = value
-//            sectorLightPath = Path().apply {
-//                addArc(RectF(0.0f, 0.0f, defaultWidth.toFloat(), defaultHeight.toFloat()), 171.0f, calSweepAngle())
-//            }
             postInvalidate()
         }
 
@@ -53,7 +53,6 @@ class ZFBSesameCredit : View {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
             color = darkSesameColor
-//            pathEffect = sectorPathEffect
         }
     }
 
@@ -65,20 +64,6 @@ class ZFBSesameCredit : View {
             isFakeBoldText = true
         }
     }
-
-    //芝麻的路径
-//    private val sesamePath by lazy {
-//        Path().apply {
-//            moveTo(DisplayUtils.dp2px(context, 5.0f).toFloat(), 0.0f)
-//            cubicTo(DisplayUtils.dp2px(context, 10.0f).toFloat(), DisplayUtils.dp2px(context, 1.0f).toFloat(),
-//                    DisplayUtils.dp2px(context, 6.0f).toFloat(), DisplayUtils.dp2px(context, 9.5f).toFloat(),
-//                    DisplayUtils.dp2px(context, 5.0f).toFloat(), DisplayUtils.dp2px(context, 10.0f).toFloat())
-//            cubicTo(DisplayUtils.dp2px(context, 4.0f).toFloat(), DisplayUtils.dp2px(context, 9.5f).toFloat(),
-//                    DisplayUtils.dp2px(context, 0.0f).toFloat(), DisplayUtils.dp2px(context, 1.0f).toFloat(),
-//                    DisplayUtils.dp2px(context, 5.0f).toFloat(), DisplayUtils.dp2px(context, 0.0f).toFloat())
-//            close()
-//        }
-//    }
 
     //芝麻的路径
     private val sesamePath by lazy {
@@ -94,21 +79,6 @@ class ZFBSesameCredit : View {
         }
     }
 
-    //暗扇形路径
-    private val sectorDarkPath by lazy {
-        Path().apply {
-            addArc(RectF(0.0f, 0.0f, defaultWidth.toFloat(), defaultHeight.toFloat()), 171.0f, 198.0f)
-        }
-    }
-    //亮扇形路径
-    private var sectorLightPath = Path().apply {
-        addArc(RectF(0.0f, 0.0f, defaultWidth.toFloat(), defaultHeight.toFloat()), 171.0f, calSweepAngle())
-    }
-
-    private val sectorPathEffect by lazy {
-        PathDashPathEffect(sesamePath, DisplayUtils.dp2px(context, 8.0f).toFloat(), 0.0f, PathDashPathEffect.Style.MORPH)
-    }
-
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(defaultWidth, defaultHeight)
@@ -116,8 +86,6 @@ class ZFBSesameCredit : View {
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.let {
-
-            //it.drawPath(sectorDarkPath, sesamePaint)
 
             with(it) {
                 for (i in 72..288 step 9) {
@@ -139,9 +107,6 @@ class ZFBSesameCredit : View {
                 }
             }
 
-
-//            it.drawPath(sectorLightPath, sesamePaint)
-
             //画中间分值
             textPaint.textSize = DisplayUtils.dp2px(context, 30.0f).toFloat()
             textPaint.isFakeBoldText = true
@@ -155,13 +120,4 @@ class ZFBSesameCredit : View {
             it.drawText("信用xx", width / 2.0f - rect2.width() / 2.0f, height.toFloat() - rect2.height() / 2, textPaint)
         }
     }
-
-    /**
-     * 根据当前分数计算画亮芝麻的弧度
-     */
-    private fun calSweepAngle(): Float {
-        return (curCores * 1.0f / maxScores) * 198.0f
-    }
-
-
 }

@@ -7,3 +7,4 @@
 | :--------: | :--------------: | :----------------------------------------------------: |
 |    get     | 发布内容弹出效果 |   ![发布内容弹出效果](./screenshots/get_publish.gif)   |
 | 马蜂窝旅游 |     蠕动tab      | ![发布内容弹出效果](./screenshots/mfw_wriggle_tab.gif) |
+|   支付宝   |    芝麻信用分    |    ![芝麻信用](./screenshots/zfb_sesame_credit.gif)    |
