@@ -1,4 +1,4 @@
-package com.vicedev.vcustomviews.customviews.MFWWriggleTab
+package com.vicedev.vcustomviews.customviews.mfw.MFWWriggleTab
 
 import android.content.Context
 import android.graphics.Color

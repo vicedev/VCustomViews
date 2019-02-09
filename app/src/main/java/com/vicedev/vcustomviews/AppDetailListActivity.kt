@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.app_detail_list_item_layout.view.*
 class AppDetailListActivity : AppCompatActivity() {
 
     companion object {
-        val APP_NAME = "app_name"
+        const val APP_NAME = "app_name"
     }
 
     private var myAdapter: MyAdapter? = null

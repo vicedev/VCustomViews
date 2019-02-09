@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit.ZFBSesameCreditContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_orange_light">
+
+        <com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit.ZFBSesameCredit
+            android:id="@+id/zfb_sesame_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+        </com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit.ZFBSesameCredit>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="当前分数，默认800"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/et_max_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="最大分数，默认1000"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btn_set_score_anim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置分数（动画）" />
+
+        <Button
+            android:id="@+id/btn_set_score_no_anim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置分数（无动画）" />
+    </LinearLayout>
+</com.vicedev.vcustomviews.customviews.zhifubao.ZFBSesameCredit.ZFBSesameCreditContainer>
