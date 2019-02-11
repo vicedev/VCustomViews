@@ -48,6 +48,14 @@ class DetailActivity : AppCompatActivity() {
                     viewId = R.layout.zfb_sesame_credit_container
                 }
             }
+
+            //微信
+            Constants.APP_WE_CHAT -> when (customViewName) {
+                //芝麻信用
+                Constants.WE_CHAT_RADAR_ADD_FRIENDS -> {
+                    viewId = R.layout.wechat_rader_add_friends_view
+                }
+            }
         }
         //添加到当前布局中
         if (viewId != 0) View.inflate(this@DetailActivity, viewId, container)
