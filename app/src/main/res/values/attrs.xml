@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--微信雷达加好友-->
+    <declare-styleable name="RadarAddFriendsView">
+        <attr name="centerImg" format="reference" />
+    </declare-styleable>
+</resources>

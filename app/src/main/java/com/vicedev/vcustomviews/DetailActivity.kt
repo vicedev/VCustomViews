@@ -53,6 +53,7 @@ class DetailActivity : AppCompatActivity() {
             Constants.APP_WE_CHAT -> when (customViewName) {
                 //芝麻信用
                 Constants.WE_CHAT_RADAR_ADD_FRIENDS -> {
+                    supportActionBar?.hide()
                     viewId = R.layout.wechat_rader_add_friends_view
                 }
             }
