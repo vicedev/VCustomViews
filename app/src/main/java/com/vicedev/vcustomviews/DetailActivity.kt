@@ -1,12 +1,11 @@
 package com.vicedev.vcustomviews
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.vicedev.vcustomviews.common.Constants
 import kotlinx.android.synthetic.main.activity_detail.*
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
 
     companion object {
         const val CUSTOM_VIEW_NAME = "custom_view_name"
@@ -20,7 +19,7 @@ class DetailActivity : AppCompatActivity() {
         val customViewName = intent.getStringExtra(CUSTOM_VIEW_NAME)
 
         //标题栏
-        supportActionBar?.title = customViewName
+        setTitle(customViewName)
 
         //自定义view的layout
         var viewId = 0
@@ -53,7 +52,8 @@ class DetailActivity : AppCompatActivity() {
             Constants.APP_WE_CHAT -> when (customViewName) {
                 //芝麻信用
                 Constants.WE_CHAT_RADAR_ADD_FRIENDS -> {
-                    supportActionBar?.hide()
+                    //隐藏标题栏
+                    hideTitleBar()
                     viewId = R.layout.wechat_rader_add_friends_view
                 }
             }

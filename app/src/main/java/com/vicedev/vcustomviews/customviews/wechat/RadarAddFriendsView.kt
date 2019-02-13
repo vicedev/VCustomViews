@@ -3,11 +3,11 @@ package com.vicedev.vcustomviews.customviews.wechat
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
+import android.media.ThumbnailUtils
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.vicedev.vcustomviews.R
-import com.vicedev.vcustomviews.common.BitmapUtils
 import com.vicedev.vcustomviews.common.DisplayUtils
 
 /**
@@ -26,7 +26,16 @@ class RadarAddFriendsView @JvmOverloads constructor(
 
     //中心图片
     private val centerImgBmp by lazy {
-        if (centerImgId == 0) null else BitmapUtils.readBitmapFromResource(resources, centerImgId, innermostCircleRadius.toInt(), innermostCircleRadius.toInt())
+        if (centerImgId == 0) {
+            null
+        } else {
+            val bitmap = BitmapFactory.decodeResource(resources, centerImgId)
+            val resultBmp = ThumbnailUtils.extractThumbnail(bitmap, innermostCircleRadius.toInt() * 2, innermostCircleRadius.toInt() * 2)
+            if (!bitmap.isRecycled) {
+                bitmap.recycle()
+            }
+            return@lazy resultBmp
+        }
     }
 
     private val centerBmpShader by lazy {
@@ -68,6 +77,16 @@ class RadarAddFriendsView @JvmOverloads constructor(
             style = Paint.Style.FILL
             shader = SweepGradient(centerX, centerY, Color.TRANSPARENT,
                     Color.parseColor("#66ffffff"))
+        }
+    }
+
+    //最内圈的外层阴影
+    private val innerCircleBlurPaint: Paint by lazy {
+        Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            style = Paint.Style.STROKE
+            strokeWidth = DisplayUtils.dp2px(context, 4f).toFloat()
+            shader = RadialGradient(centerX, centerY, innermostCircleRadius + DisplayUtils.dp2px(context, 4f).toFloat(),
+                    Color.WHITE, Color.parseColor("#11ffffff"), Shader.TileMode.CLAMP)
         }
     }
 
@@ -119,7 +138,16 @@ class RadarAddFriendsView @JvmOverloads constructor(
             }
 
             //画中心图
-            it.drawCircle(centerX, centerY, innermostCircleRadius, centerImgPaint)
+            with(it) {
+                save()
+                translate(centerX - innermostCircleRadius, centerY - innermostCircleRadius)
+                drawCircle(innermostCircleRadius, innermostCircleRadius, innermostCircleRadius, centerImgPaint)
+                restore()
+            }
+
+            //最内圈外模糊效果
+            it.drawCircle(centerX, centerY, innermostCircleRadius + DisplayUtils.dp2px(context, 4f).toFloat(), innerCircleBlurPaint)
+
         }
     }
 
