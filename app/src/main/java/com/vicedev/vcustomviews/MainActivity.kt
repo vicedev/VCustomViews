@@ -2,7 +2,6 @@ package com.vicedev.vcustomviews
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -12,7 +11,7 @@ import com.vicedev.vcustomviews.common.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_list_item_layout.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private var myAdapter: MyAdapter? = null
 
@@ -24,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
+
+        //隐藏标题栏返回按钮
+        hideTitleBarBackBtn()
+
         myAdapter = MyAdapter()
         with(rv_list) {
             adapter = myAdapter

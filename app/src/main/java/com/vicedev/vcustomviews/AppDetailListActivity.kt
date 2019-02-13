@@ -2,7 +2,6 @@ package com.vicedev.vcustomviews
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -12,7 +11,7 @@ import com.vicedev.vcustomviews.common.Constants
 import kotlinx.android.synthetic.main.activity_app_detail_list.*
 import kotlinx.android.synthetic.main.app_detail_list_item_layout.view.*
 
-class AppDetailListActivity : AppCompatActivity() {
+class AppDetailListActivity : BaseActivity() {
 
     companion object {
         const val APP_NAME = "app_name"
@@ -31,7 +30,8 @@ class AppDetailListActivity : AppCompatActivity() {
     private fun init() {
         appName = intent.getStringExtra(APP_NAME)
 
-        supportActionBar?.title = appName
+        //标题栏
+        setTitle(appName)
 
         myAdapter = MyAdapter(Constants.APP_MAP[appName]!!)
 
