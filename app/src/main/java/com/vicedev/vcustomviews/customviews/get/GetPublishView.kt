@@ -41,9 +41,9 @@ class GetPublishView : RelativeLayout {
         val dex = DisplayUtils.dp2px(context, 80.0f * sqrt(3.0f) / 2.0f).toFloat()
         val dex2 = DisplayUtils.dp2px(context, 80.0f * 0.5f).toFloat()
         item1.animate().translationY((-DisplayUtils.dp2px(context, 80f)).toFloat()).setDuration(animDuration).setInterpolator(BounceInterpolator()).start()
-        item2.animate().translationX(-dex).translationY(-dex2).setDuration(animDuration).setInterpolator(BounceInterpolator()).start()
-        item3.animate().translationX(-dex).translationY(dex2).setDuration(animDuration).setInterpolator(BounceInterpolator()).start()
-        item4.animate().translationY((-DisplayUtils.dp2px(context, -80f)).toFloat()).setDuration(animDuration).setInterpolator(BounceInterpolator()).start()
+        item2.animate().translationX(-dex).translationY(-dex2).setDuration(animDuration).setInterpolator(BounceInterpolator()).setStartDelay(50).start()
+        item3.animate().translationX(-dex).translationY(dex2).setDuration(animDuration).setInterpolator(BounceInterpolator()).setStartDelay(100).start()
+        item4.animate().translationY((-DisplayUtils.dp2px(context, -80f)).toFloat()).setDuration(animDuration).setInterpolator(BounceInterpolator()).setStartDelay(150).start()
     }
 
     private fun close() {
