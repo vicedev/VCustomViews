@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.ViewGroup
 import android.widget.TextView
 import com.vicedev.vcustomviews.R
 import com.vicedev.vcustomviews.common.DisplayUtils
@@ -19,6 +20,7 @@ class XMPlayDragView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : TextView(context, attrs, defStyleAttr) {
     init {
+        layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10.0f)
         setTextColor(Color.WHITE)
         setPadding(DisplayUtils.dp2px(context, 10.0f), DisplayUtils.dp2px(context, 5.0f),

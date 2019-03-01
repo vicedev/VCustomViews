@@ -2,12 +2,12 @@
 <com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarContainer
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:orientation="vertical">
 
     <com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_height="wrap_content" />
 
 </com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarContainer>
