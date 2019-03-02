@@ -23,6 +23,9 @@ class XMPlayLabelView @JvmOverloads constructor(
 
     private val padding1 by lazy { DisplayUtils.dp2px(context, 5.0f) }
     private val padding2 by lazy { DisplayUtils.dp2px(context, 10.0f) }
+    private val padding3 by lazy { DisplayUtils.dp2px(context, 15.0f) }
+
+    private var currentMode = MODE_HIDE
 
     companion object {
         const val MODE_LEFT = 1//往左
@@ -39,6 +42,13 @@ class XMPlayLabelView @JvmOverloads constructor(
     }
 
     public fun setDisplayMode(mode: Int): XMPlayLabelView {
+
+        if (mode == currentMode) {
+            return this
+        } else {
+            currentMode = mode
+        }
+
         when (mode) {
             MODE_CENTER -> {
                 setPadding(padding2, padding1, padding2, padding1)
@@ -47,13 +57,13 @@ class XMPlayLabelView @JvmOverloads constructor(
             }
 
             MODE_LEFT -> {
-                setPadding(padding2, padding1, padding2, padding1)
+                setPadding(padding3, padding1, padding3, padding1)
                 setBackgroundResource(R.drawable.xiami_label_view_bg_left)
                 visibility = VISIBLE
             }
 
             MODE_RIGHT -> {
-                setPadding(padding2, padding1, padding2, padding1)
+                setPadding(padding3, padding1, padding3, padding1)
                 setBackgroundResource(R.drawable.xiami_label_view_bg_right)
                 visibility = VISIBLE
             }

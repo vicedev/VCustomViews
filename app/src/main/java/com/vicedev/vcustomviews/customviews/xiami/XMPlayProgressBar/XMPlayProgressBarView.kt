@@ -19,6 +19,12 @@ class XMPlayProgressBarView @JvmOverloads constructor(
     private val xmPlayDragView: XMPlayDragView by lazy { XMPlayDragView(context) }
     private val xmPlayLabelView: XMPlayLabelView by lazy { XMPlayLabelView(context) }
 
+    //最小变换label方向的距离
+    private val minMoveDirection by lazy { DisplayUtils.dp2px(context, 1.0f) }
+
+    private var lastX = 0.0f
+    private var touchX = 0.0f
+
     //总时间
     private var total = 360
         set(value) {
@@ -42,27 +48,38 @@ class XMPlayProgressBarView @JvmOverloads constructor(
 
         //添加上方显示的LabelView
         addView(xmPlayLabelView)
-        //添加拖拽的view
-        addView(xmPlayDragView)
+        //添加拖拽的view，隔一点距离
+        val lp = MarginLayoutParams(MarginLayoutParams.WRAP_CONTENT, MarginLayoutParams.WRAP_CONTENT)
+        lp.topMargin = DisplayUtils.dp2px(context, 10.0f)
+        addView(xmPlayDragView, lp)
 
-        //隔一点间距
-        (xmPlayDragView.layoutParams as MarginLayoutParams).bottomMargin = DisplayUtils.dp2px(context, 10.0f)
-        xmPlayDragView.requestLayout()
+        xmPlayLabelView.setDisplayMode(XMPlayLabelView.MODE_HIDE).text = currentLabel()
 
-        xmPlayLabelView.setDisplayMode(XMPlayLabelView.MODE_LEFT).text = currentLabel()
-
-        xmPlayDragView.setOnTouchListener { v, event ->
+        xmPlayDragView.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    lastX = event.x
+                    touchX = event.x
                     xmPlayLabelView.setDisplayMode(XMPlayLabelView.MODE_CENTER)
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-
+                    val dex = event.x - lastX
+                    xmPlayDragView.x += event.x - touchX
+                    xmPlayLabelView.x += event.x - touchX
+                    if (Math.abs(dex) > minMoveDirection) {
+                        xmPlayLabelView.setDisplayMode(
+                                when {
+                                    dex < 0 -> XMPlayLabelView.MODE_RIGHT
+                                    dex > 0 -> XMPlayLabelView.MODE_LEFT
+                                    else -> XMPlayLabelView.MODE_CENTER
+                                }
+                        )
+                        lastX = event.x
+                    }
                 }
 
                 MotionEvent.ACTION_UP -> {
-
                     xmPlayLabelView.setDisplayMode(XMPlayLabelView.MODE_HIDE)
                 }
             }
