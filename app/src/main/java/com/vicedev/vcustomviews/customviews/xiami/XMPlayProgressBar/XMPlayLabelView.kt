@@ -23,7 +23,7 @@ class XMPlayLabelView @JvmOverloads constructor(
 
     private val padding1 by lazy { DisplayUtils.dp2px(context, 5.0f) }
     private val padding2 by lazy { DisplayUtils.dp2px(context, 10.0f) }
-    private val padding3 by lazy { DisplayUtils.dp2px(context, 15.0f) }
+    private val padding3 by lazy { DisplayUtils.dp2px(context, 20.0f) }
 
     private var currentMode = MODE_HIDE
 
@@ -36,12 +36,13 @@ class XMPlayLabelView @JvmOverloads constructor(
 
     init {
         layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        setPadding(padding2, padding1, padding2, padding1)
         visibility = View.INVISIBLE
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15.0f)
         setTextColor(Color.WHITE)
     }
 
-    public fun setDisplayMode(mode: Int): XMPlayLabelView {
+    fun setDisplayMode(mode: Int): XMPlayLabelView {
 
         if (mode == currentMode) {
             return this

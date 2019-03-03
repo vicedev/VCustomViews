@@ -30,14 +30,12 @@ class XMPlayProgressBarView @JvmOverloads constructor(
         set(value) {
             if (value <= 0) return
             field = value
-            postInvalidate()
         }
 
     //当前时间
     private var current = 0
         set(value) {
             field = if (value > total) total else value
-            postInvalidate()
         }
 
     init {
@@ -65,8 +63,10 @@ class XMPlayProgressBarView @JvmOverloads constructor(
 
                 MotionEvent.ACTION_MOVE -> {
                     val dex = event.x - lastX
-                    xmPlayDragView.x += event.x - touchX
-                    xmPlayLabelView.x += event.x - touchX
+
+                    //根据拖拽移动控件
+                    moveView(event)
+
                     if (Math.abs(dex) > minMoveDirection) {
                         xmPlayLabelView.setDisplayMode(
                                 when {
@@ -85,6 +85,28 @@ class XMPlayProgressBarView @JvmOverloads constructor(
             }
             true
         }
+    }
+
+    //根据拖拽移动控件
+    private fun moveView(event: MotionEvent) {
+        //拖拽的view
+        var dragTargetX = xmPlayDragView.x + event.x - touchX
+        dragTargetX = when {
+            dragTargetX < 0 -> 0.0f
+            dragTargetX > width - xmPlayDragView.width -> (width - xmPlayDragView.width).toFloat()
+            else -> dragTargetX
+        }
+        xmPlayDragView.x = dragTargetX
+
+        //label view
+        var labelTargetX = dragTargetX - ((xmPlayLabelView.width - xmPlayDragView.width) / 2)
+        labelTargetX = when {
+            labelTargetX < 0 -> 0.0f
+            labelTargetX > width - xmPlayLabelView.width -> (width - xmPlayLabelView.width).toFloat()
+            else -> labelTargetX
+        }
+        xmPlayLabelView.x = labelTargetX
+
     }
 
     /**
