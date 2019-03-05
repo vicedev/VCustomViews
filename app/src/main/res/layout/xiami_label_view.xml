@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayLabelView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:width="100dp"
+    android:background="@drawable/xiami_label_view_bg_center"
+    android:gravity="center"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:textColor="@android:color/white"
+    android:textSize="15dp"
+    tools:text="0.00/6.00">
+
+</com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayLabelView>

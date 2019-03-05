@@ -9,3 +9,4 @@
 | 马蜂窝旅游 |     蠕动tab      |  ![发布内容弹出效果](./screenshots/mfw_wriggle_tab.gif)   |
 |   支付宝   |    芝麻信用分    |     ![芝麻信用](./screenshots/zfb_sesame_credit.gif)      |
 |    微信    |    雷达加朋友    | ![雷达加朋友](./screenshots/wechat_radar_add_friends.gif) |
+|  虾米音乐  |    音乐进度条    |  ![音乐进度条](./screenshots/xiami_play_progressbar.gif)  |

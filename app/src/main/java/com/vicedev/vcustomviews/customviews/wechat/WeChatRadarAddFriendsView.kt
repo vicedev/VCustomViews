@@ -18,7 +18,7 @@ import com.vicedev.vcustomviews.common.DisplayUtils
  */
 
 
-class RadarAddFriendsView @JvmOverloads constructor(
+class WeChatRadarAddFriendsView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
@@ -43,8 +43,8 @@ class RadarAddFriendsView @JvmOverloads constructor(
     }
 
     init {
-        val ta = context.obtainStyledAttributes(attrs, R.styleable.RadarAddFriendsView, defStyleAttr, 0)
-        centerImgId = ta.getResourceId(R.styleable.RadarAddFriendsView_centerImg, 0)
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.WeChatRadarAddFriendsView, defStyleAttr, 0)
+        centerImgId = ta.getResourceId(R.styleable.WeChatRadarAddFriendsView_centerImg, 0)
         ta.recycle()
     }
 

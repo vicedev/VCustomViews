@@ -57,6 +57,14 @@ class DetailActivity : BaseActivity() {
                     viewId = R.layout.wechat_rader_add_friends_view
                 }
             }
+
+            //虾米音乐
+            Constants.APP_XIA_MI_MUSIC -> when (customViewName) {
+                //播放进度条
+                Constants.XIA_MI_MUSIC_PLAY_PROGRESSBAR -> {
+                    viewId = R.layout.xiami_play_progressbar_container
+                }
+            }
         }
         //添加到当前布局中
         if (viewId != 0) View.inflate(this@DetailActivity, viewId, container)
