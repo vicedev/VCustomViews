@@ -1,11 +1,8 @@
 package com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import com.vicedev.vcustomviews.R
 import com.vicedev.vcustomviews.common.DisplayUtils
@@ -21,11 +18,10 @@ class XMPlayLabelView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : TextView(context, attrs, defStyleAttr) {
 
-    private val padding1 by lazy { DisplayUtils.dp2px(context, 5.0f) }
-    private val padding2 by lazy { DisplayUtils.dp2px(context, 10.0f) }
-    private val padding3 by lazy { DisplayUtils.dp2px(context, 20.0f) }
+    private val centerWidth by lazy { DisplayUtils.dp2px(context, 100.0f) }
+    private val lrWidth by lazy { DisplayUtils.dp2px(context, 120.0f) }
 
-    private var currentMode = MODE_HIDE
+    var currentMode = MODE_HIDE
 
     companion object {
         const val MODE_LEFT = 1//往左
@@ -35,11 +31,7 @@ class XMPlayLabelView @JvmOverloads constructor(
     }
 
     init {
-        layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        setPadding(padding2, padding1, padding2, padding1)
         visibility = View.INVISIBLE
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15.0f)
-        setTextColor(Color.WHITE)
     }
 
     fun setDisplayMode(mode: Int): XMPlayLabelView {
@@ -52,19 +44,19 @@ class XMPlayLabelView @JvmOverloads constructor(
 
         when (mode) {
             MODE_CENTER -> {
-                setPadding(padding2, padding1, padding2, padding1)
+                width = centerWidth
                 setBackgroundResource(R.drawable.xiami_label_view_bg_center)
                 visibility = VISIBLE
             }
 
             MODE_LEFT -> {
-                setPadding(padding3, padding1, padding3, padding1)
+                width = lrWidth
                 setBackgroundResource(R.drawable.xiami_label_view_bg_left)
                 visibility = VISIBLE
             }
 
             MODE_RIGHT -> {
-                setPadding(padding3, padding1, padding3, padding1)
+                width = lrWidth
                 setBackgroundResource(R.drawable.xiami_label_view_bg_right)
                 visibility = VISIBLE
             }
@@ -72,5 +64,16 @@ class XMPlayLabelView @JvmOverloads constructor(
             MODE_HIDE -> visibility = INVISIBLE
         }
         return this
+    }
+
+    /**
+     * 获取相应mode下的宽度
+     */
+    fun getCurrentWidth(): Int {
+        return when (currentMode) {
+            MODE_CENTER -> centerWidth
+            MODE_LEFT, MODE_RIGHT -> lrWidth
+            else -> centerWidth
+        }
     }
 }

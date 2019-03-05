@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarContainer
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
     android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:orientation="vertical">
+    android:paddingRight="15dp">
 
     <com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarView
+        android:id="@+id/xm_pbv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_current"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="当前时间（秒）"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/et_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="总时间（秒）"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置" />
 
 </com.vicedev.vcustomviews.customviews.xiami.XMPlayProgressBar.XMPlayProgressBarContainer>
